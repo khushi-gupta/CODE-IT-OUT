@@ -1,0 +1,145 @@
+#include <iostream>
+#include<vector>
+#include<queue>
+#include<bits/stdc++.h>
+using namespace std;
+void showstack(queue <char> s) 
+{ 
+    while (!s.empty()) 
+    { 
+        cout << s.front(); 
+        s.pop(); 
+    } 
+  
+}  
+  
+int main() 
+{
+vector<int>b;
+queue<char>v;
+long long int n;
+cin>>n;
+vector<int>a;
+long int c=0;
+long long int x;
+for(long long int i=0;i<n;i++)
+{
+cin>>x;	
+a.push_back(x);
+}
+long long int i=0;
+long long int j=n-1;
+for(int p=0;p<n;p++)
+{
+  if(a[i]<a[j])
+  {
+  	if(b.empty())
+  	{
+  		c++;
+  		b.push_back(a[i]);
+  		v.push('L');
+        i++;  	
+  	
+  	}
+  	else if(a[i]>b.back())
+  	{
+  		c++;
+  		b.push_back(a[i]);
+  		v.push('L');
+  		i++;
+  		
+  	}
+  	else if(a[j]>b.back())
+  	{
+  	    c++;
+  		b.push_back(a[j]);
+  		v.push('R');
+  		j--;
+  	}
+  }
+  
+  
+  
+ else if(a[i]>a[j])
+  {
+  	if(b.empty())
+  	{
+  		c++;
+  		b.push_back(a[j]);
+  		v.push('R');
+        j--;  	
+  	
+  	}
+  	else if(a[j]>b.back())
+  	{
+  		c++;
+  		b.push_back(a[j]);
+  		v.push('R');
+  		j--;
+  		
+  	}
+  	else if(a[i]>b.back())
+  	{
+  	    c++;
+  		b.push_back(a[i]);
+  		v.push('L');
+  	    i++;
+  	}
+  }
+  
+else if(a[i]==a[j]&&i!=j)
+{int c1=1,c2=1;
+
+	if(b.empty()||a[i]>b.back())
+	{
+		
+	int k=i+1;
+	while(a[k]>a[k-1]&&k<n)
+	{
+		c1++;
+		k++;
+	}
+	int w=j-1;
+	while(a[w]>a[w+1]&&w>=0)
+	{
+		c2++;
+		w--;
+	}
+		
+		if(c1>c2)
+		{
+			c=c+c1;
+			while(c1--)
+			v.push('L');
+		}
+		else
+		{
+			c=c+c2;
+			while(c2--)
+			v.push('R');
+		}
+	break;	
+	}
+	
+
+}
+  
+else if(n==1)
+{
+	c++;
+  	v.push('L');
+  	break;
+}
+else  if(i==j&&a[i]>b.back())
+  {
+  	c++;
+  	v.push('L');
+  	break;
+  }
+  
+}
+
+cout<<c<<endl;
+showstack(v);
+	return 0;
+}
