@@ -1,0 +1,36 @@
+#include <iostream>
+using namespace std;
+
+int main() 
+{
+string s;
+cin>>s;
+if(s.length()==1)
+cout<<0<<endl;
+else
+{long long int sum=0,k=0;
+	while(1)
+	{
+		sum=0;
+		for(long long int i=0;i<s.length();i++)
+		{
+			sum=sum+s[i]-'0';
+			
+		}
+		if(sum<=9)
+		{
+			k++;
+			break;
+		}
+		else
+		{
+			k++;
+			s=to_string(sum);
+		}
+	
+	}
+	cout<<k<<endl;
+	
+}
+	return 0;
+}
