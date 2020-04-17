@@ -1,0 +1,44 @@
+#include<bits/stdc++.h>
+#include <iostream>
+using namespace std;
+
+int main() 
+{
+int n1,n2,n3;
+cin>>n1>>n2>>n3;
+
+vector<long long int>d;
+
+
+int a;
+long long int k=n1+n2+n3;
+for(long long int i=0;i<k;i++)
+{cin>>a;
+d.push_back(a);
+	
+}
+sort(d.begin(),d.end());
+long long int c=0;
+for(long long int i=0;i<d.size();i++)
+{
+	if(d[i]==d[i+1]&&d[i+1]==d[i+2])
+	{
+		c++;
+		i++;
+	}
+	else if(d[i]==d[i+1])
+	c++;
+}
+cout<<c<<endl;
+for(long long int i=0;i<d.size();i++)
+{
+	if(d[i]==d[i+1]&&d[i+1]==d[i+2])
+	{i++;
+		cout<<d[i]<<endl;
+	}
+	else if(d[i]==d[i+1])
+    cout<<d[i]<<endl;
+}
+
+	return 0;
+}
