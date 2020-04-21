@@ -1,0 +1,57 @@
+#include <iostream>
+#include<vector>
+using namespace std;
+
+int main() 
+{
+	long long int n;
+	cin>>n;
+	vector<int>a;
+	int k;
+	for(long long int i=0;i<n;i++)
+	{cin>>k;
+	a.push_back(k);
+	}
+	long long int dep=0,pos1=0,sym=0,pos2=0;
+	long long int max1=0,max2=0;
+	long long int c=0,x=0;
+	for(long long int i=0;i<n;i++)
+	{
+		if(a[i]==1)
+		dep++;
+		else
+		{
+			if(dep>max1)
+			{max1=dep;
+			pos1=i;
+			}
+			dep--;
+			
+		}
+		
+			if(a[i]==1)
+		{
+			sym++;
+			c++;
+		}
+		else if(a[i]==2)
+		{
+			sym++;
+			c--;
+			if(c==0)
+		{
+			if(sym>max2)
+			{
+				max2=sym;
+		        pos2=i-sym+2;
+			}
+			sym=0;
+		}
+		}
+		
+	}
+	
+	cout<<max1<<" "<<pos1<<" "<<max2<<" "<<pos2;
+	
+	return 0;
+}
