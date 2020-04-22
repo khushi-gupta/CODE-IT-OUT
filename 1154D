@@ -1,0 +1,44 @@
+#include <iostream>
+using namespace std;
+
+int main()
+{
+	
+    long long int n,b,a;
+    cin>>n>>b>>a;
+    long long int s[n],p=0,maxa=a;
+    
+    for(long long int i=0;i<n;i++)
+    {
+    	cin>>s[i];
+    	
+    }
+    
+    for(long long int i=0;i<n;i++)
+    {
+    	if(s[i]==1)
+    	{
+    		if(a<maxa&&b>0)
+    		{
+    			a++;p++;b--;
+    		}
+    		else if(a>0)
+    		{
+    			a--;p++;
+    		}
+    	}
+    	else if(s[i]==0)
+    	{
+    		if(a!=0)
+    		{
+    			a--;p++;
+    		}
+    		else if(b>0)
+    		{
+    			b--;p++;
+    		}
+    	}
+    }
+    cout<<p<<endl;
+	return 0;
+}
