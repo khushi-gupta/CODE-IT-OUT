@@ -1,0 +1,54 @@
+#include <iostream>
+#include<algorithm>
+using namespace std;
+long long int maxsubarr(long long int a[],long long int n)
+{
+    long long int max1=0,max2=0;
+    for(long long int i=0;i<n;i++)
+    {
+        max2=max2+a[i];
+        if(max2<0)
+        max2=0;
+        if(max1<max2)
+        max1=max2;
+        
+    }
+    sort(a,a+n);
+    if(max1==0)
+    return a[n-1];
+    return max1;
+}
+
+long long int maxsubseq(long long int a[],long long int n)
+{
+long long int maxx=-1000000,m=0;
+sort(a,a+n);
+for(long long int i=n-1;i>=0;i--)
+{
+   m=m+a[i];
+   if(m>maxx)
+   maxx=m;
+}
+return maxx;
+}
+int main() 
+{
+int t;
+cin>>t;
+while(t--)
+{
+    long long int n;
+    cin>>n;
+    long long int a[n];
+    for(long long int i=0;i<n;i++)
+    {
+        cin>>a[i];
+    }
+    
+    long long int ans=maxsubarr(a,n);
+    long long int an=maxsubseq(a,n);
+    cout<<ans<<" "<<an<<endl;
+    
+}
+    return 0;
+}
