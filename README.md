@@ -1,2 +1,2 @@
 # CODE-IT-OUT
-Fractal2019
+Competitive coding problems
