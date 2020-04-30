@@ -1,0 +1,18 @@
+#include <iostream>
+#include<math.h>
+using namespace std;
+
+int main() 
+{
+long double m;
+long long int n;
+cin>>m>>n;
+long double ans=0;
+for(long long int i=1;i<=m;i++)
+{long double a=(i/m);
+long double b=(i-1)/m;
+	ans=ans+i*(pow(a,n)-pow(b,n));
+}
+cout<<ans<<endl;
+	return 0;
+}
