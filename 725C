@@ -1,0 +1,80 @@
+#include <iostream>
+using namespace std;
+
+int main() 
+{string s;
+
+	cin>>s;
+	char ch;
+	int st,end;
+	for(int i=0;i<27;i++)
+	{
+		for(int j=i+1;j<27;j++)
+		if(s[i]==s[j])
+		{
+			ch=s[i];
+			st=i;
+			end=j;
+			break;
+		}
+	}
+
+	if((end-st)<=1)
+	cout<<"Impossible";
+	else
+	{st++;
+		char p[2][13];
+		int d;
+		int k=(end-st)/2;
+		d=12-k;
+	    
+		p[0][d]=ch;
+		for(int i=d+1;i<13;i++)
+		{
+			p[0][i]=s[st];
+			st++;
+		}
+		for(int i=12;i>=d;i--)
+		{   if(st==end&&st<26)
+		    st++;
+		   else if(st==end&&st>=26)
+		   st=0;
+			p[1][i]=s[st];
+			st++;
+			if(st>26)
+			st=0;
+		}
+		for(int i=d-1;i>=0;i--)
+		{if(st==end&&st<26)
+		    st++;
+		   else if(st==end&&st>=26)
+		   st=0;
+			p[1][i]=s[st];
+			st++;
+			if(st>26)
+			st=0;
+		}
+		for(int i=0;i<d;i++)
+		{if(st==end&&st<26)
+		    st++;
+		   else if(st==end&&st>=26)
+		   st=0;
+			p[0][i]=s[st];
+			st++;
+			if(st>26)
+			st=0;
+		}
+		
+		
+		for(int i=0;i<2;i++)
+		{
+			for(int j=0;j<13;j++)
+			cout<<p[i][j];
+			cout<<endl;
+		}
+		
+	}
+	
+	
+	return 0;
+}
